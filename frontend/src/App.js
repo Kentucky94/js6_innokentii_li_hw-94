@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Switch, Route, Redirect} from 'react-router-dom';
+import {useSelector} from "react-redux";
 
-function App() {
+import Layout from "./components/Layout/Layout";
+import PostsPage from "./containers/PostsPage/PostsPage";
+import Login from "./containers/Login/Login";
+import Register from "./containers/Register/Register";
+import EditProfile from "./containers/EditProfile/EditProfile";
+import AddPost from "./containers/AddPost/AddPost";
+import CssBaseline from "@material-ui/core/CssBaseline";
+
+const ProtectedRoute = ({isAllowed, ...props}) => (
+  isAllowed ? <Route {...props} /> : <Redirect to='/register' />
+);
+
+const App = () => {
+  const user = useSelector(state => state.users.user);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <CssBaseline />
+      <Switch>
+        <ProtectedRoute isAllowed={user} path='/' exact component={PostsPage} />
+        <Route path='/login' exact component={Login} />
+        <Route path='/register' exact component={Register} />
+        <ProtectedRoute isAllowed={user} path='/users/edit' exact component={EditProfile} />
+        <ProtectedRoute isAllowed={user} path='/posts/add' exact component={AddPost} />
+      </Switch>
+    </Layout>
   );
-}
+};
 
 export default App;
