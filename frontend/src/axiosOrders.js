@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-import store from "./store/configureStore";
+import {store} from "./index";
 
 const axiosOrders = axios.create({
   baseURL: 'http://localhost:8080'

@@ -85,8 +85,10 @@ router.patch('/edit', [auth, upload.single('avatar')], async (req, res) => {
     const user = req.user;
     const newData = req.body;
 
-    if(newData.password){
-      user.password = newData.password;
+    const isMatch = await user.comparePassword(newData.oldPassword);
+
+    if(newData.newPassword && isMatch){
+      user.password = newData.newPassword;
     }
     if(newData.displayName){
       user.displayName = newData.displayName;

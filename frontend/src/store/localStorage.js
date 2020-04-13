@@ -1,3 +1,5 @@
+import {LOGIN_USER_SUCCESS, LOGOUT_USER_SUCCESS} from "./actions/usersActions";
+
 const saveToLocalStorage = state => {
   try{
     const serializedState = JSON.stringify(state);
@@ -20,7 +22,7 @@ export const loadFromLocalStorage = () => {
   }
 };
 
-const actionsList = ['LOGIN_USER_SUCCESS', 'LOGOUT_USER_SUCCESS'];
+const actionsList = [LOGIN_USER_SUCCESS, LOGOUT_USER_SUCCESS];
 
 export const localStorageMiddleware = store => next => action => {
   let result = next(action);
