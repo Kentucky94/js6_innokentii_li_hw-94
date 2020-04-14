@@ -50,7 +50,7 @@ router.get('/', auth, async (req, res) => {
       subscriptions = subscriptions.concat(req.user.subscription);
     }
 
-    const posts = await Post.find({user: {$in: subscriptions}}).sort({date: -1});
+    const posts = await Post.find({user: {$in: subscriptions}}).populate('user').sort({date: -1});
 
     return res.send(posts);
   }catch(error){

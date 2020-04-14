@@ -21,7 +21,7 @@ const App = () => {
   return (
     <Layout>
       <CssBaseline />
-      <Container>
+      <Container style={{'paddingTop': '20px'}}>
         <Switch>
           <ProtectedRoute isAllowed={user} path='/' exact component={PostsPage} />
           <Route path='/login' exact component={Login} />

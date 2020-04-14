@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 
-class Register extends Component {
+class EditProfile extends Component {
   state = {
     oldPassword: '',
     newPassword: '',
@@ -114,4 +114,4 @@ const mapDispatchToProps = dispatch => ({
   editUser: userData => dispatch(editUserProfile(userData))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(EditProfile);

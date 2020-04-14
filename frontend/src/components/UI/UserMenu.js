@@ -9,6 +9,7 @@ import Divider from "@material-ui/core/Divider";
 
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import AddIcon from '@material-ui/icons/Add';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
 const UserMenu = ({user, logout}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -23,6 +24,10 @@ const UserMenu = ({user, logout}) => {
 
   return (
     <Fragment>
+      <IconButton color='inherit' >
+        <PersonAddIcon />
+      </IconButton>
+
       <IconButton color='inherit' component={Link} to='/posts/add'>
         <AddIcon />
       </IconButton>
@@ -42,7 +47,7 @@ const UserMenu = ({user, logout}) => {
           Hello, {user.displayName}!
         </ListItem>
         <Divider/>
-        <MenuItem onClick={handleClose} component={Link} to='/profile'>Profile</MenuItem>
+        <MenuItem onClick={handleClose} component={Link} to='/users/edit'>Profile</MenuItem>
         <MenuItem onClick={logout}>Logout</MenuItem>
       </Menu>
     </Fragment>

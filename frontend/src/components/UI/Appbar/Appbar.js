@@ -1,11 +1,10 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import {makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import {useDispatch, useSelector} from "react-redux";
 import {logoutUser} from "../../../store/actions/usersActions";
 import UserMenu from "../UserMenu";
@@ -20,10 +19,12 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    color: 'inherit',
+    textDecoration: 'none',
   },
 }));
 
-const MainAppBar = props => {
+const MainAppBar = () => {
   const classes = useStyles();
   const user = useSelector(state => state.users.user);
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ const MainAppBar = props => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6" className={classes.title} component={Link} to='/'>
             SocialApp
           </Typography>
           {user ? (
