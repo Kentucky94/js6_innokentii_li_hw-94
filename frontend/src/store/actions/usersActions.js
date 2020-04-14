@@ -45,6 +45,16 @@ export const editUserProfile = profileData => {
   }
 };
 
+export const subscribeToUser = subscriptionData => {
+  return async dispatch => {
+    try{
+      await axiosOrders.post('/users/subscribe', subscriptionData)
+    }catch(error){
+      console.log(error);
+    }
+  }
+};
+
 export const logoutUser = () => {
   return async dispatch => {
     try{

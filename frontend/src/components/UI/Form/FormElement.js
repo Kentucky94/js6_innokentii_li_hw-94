@@ -1,24 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
 import FileInput from "./FileInput";
 import Chip from "@material-ui/core/Chip";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
 const FormElement = props => {
   let inputChildren = undefined;
-
-  if (props.type === 'select'){
-    inputChildren = props.options.map(option => (
-      <MenuItem
-        key={option.id}
-        value={option.id}
-      >
-        {option.title}
-      </MenuItem>
-    ));
-  }
   
   let inputComponent = (
     <TextField
@@ -27,7 +16,6 @@ const FormElement = props => {
       label={props.title}
       helperText={props.error}
       type={props.type}
-      select={props.type === 'select'}
       name={props.propertyName} id={props.propertyName}
       value={props.value}
       onChange={props.onChange}

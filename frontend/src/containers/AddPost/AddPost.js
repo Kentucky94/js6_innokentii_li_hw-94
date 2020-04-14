@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
-import {registerUser} from "../../store/actions/usersActions";
 import {connect} from "react-redux";
+
 import FormElement from "../../components/UI/Form/FormElement";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";

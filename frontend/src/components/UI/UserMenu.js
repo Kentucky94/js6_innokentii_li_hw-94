@@ -10,21 +10,33 @@ import Divider from "@material-ui/core/Divider";
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import AddIcon from '@material-ui/icons/Add';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import SubscribeModal from "./Modal/SubscribeModal";
 
 const UserMenu = ({user, logout}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
 
+  const [open, setOpen] = React.useState(false);
+  const handleModalOpen = () => {
+    setOpen(true);
+  };
+  const handleModalClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Fragment>
-      <IconButton color='inherit' >
+      <SubscribeModal
+        open={open}
+        handleClose={handleModalClose}
+      />
+
+      <IconButton color='inherit' onClick={handleModalOpen}>
         <PersonAddIcon />
       </IconButton>
 

@@ -12,7 +12,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 
 const ProtectedRoute = ({isAllowed, ...props}) => (
-  isAllowed ? <Route {...props} /> : <Redirect to='/register' />
+  isAllowed ? <Route {...props} /> : <Redirect to='/login' />
 );
 
 const App = () => {
