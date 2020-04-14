@@ -14,7 +14,7 @@ class PostsPage extends Component {
 
   render() {
     const postCards = this.props.posts.map(post =>
-      <Grid item>
+      <Grid item key={post._id}>
         <MediaCard
           image={'http://localhost:8080/uploads/' + post.image}
           username={!!post.user ? post.user.displayName : 'Anonymous'}
@@ -25,10 +25,10 @@ class PostsPage extends Component {
     );
 
     return (
-      <Container fullWidth>
+      <Container>
         {this.props.posts.length === 0 ?
           (<Typography variant='h4'>No posts are available</Typography>) :
-          (<Grid container direction='row' justify='flex-start' xs={12} spacing={2}>
+          (<Grid container direction='row' justify='flex-start' spacing={2}>
             {postCards}
           </Grid>
         )}

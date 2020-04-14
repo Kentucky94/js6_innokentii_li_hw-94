@@ -58,4 +58,14 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
+router.get('/tags', async (req, res) => {
+  try{
+    const tags = await Post.distinct('tags');
+
+    res.send(tags);
+  }catch(error){
+    return res.status(500).send(error);
+  }
+});
+
 module.exports = router;
